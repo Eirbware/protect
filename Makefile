@@ -36,4 +36,4 @@ dev: demo
 .PHONY: clean
 clean:
 	docker compose down
-	${RM} -r nginx dist vendor composer.lock
+	${RM} -r nginx dist composer.lock
