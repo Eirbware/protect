@@ -4,6 +4,7 @@ session_start();
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/../../php/vendor/autoload.php';
+require_once __DIR__ . '/src/LoginResponse.php';
 require_once __DIR__ . '/../../php/auth-config.php';
 
 use Eirbware\Protect\LoginResponse;
