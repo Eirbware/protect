@@ -15,7 +15,7 @@ composer.lock:
 
 dist/www/%: src/%
 	@mkdir -p $(dir $@)
-	cp -r $^ $@
+	cp -rf $^ $@
 
 dist/php/%: %
 	@mkdir -p $(dir $@)

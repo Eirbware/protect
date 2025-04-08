@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo protect</title>
+<script type="module">
+import protect from "/lib/protect.js";
+
+async function data_button()
+{
+    try
+    {
+        const data = await protect.getData();
+        alert(JSON.stringify(data));
+    }
+    catch (err)
+    {
+        alert(err);
+    }
+}
+
+document.getElementById("login").onclick = protect.login;
+document.getElementById("get-data").onclick = data_button;
+document.getElementById("logout").onclick = protect.logout;
+</script>
+</head>
+<body>
+    <h1>Demo protect by Eirbware</h1>
+
+    <button id="login">Login</button>
+    <button id="get-data">Voir les données</button>
+    <button id="logout">Logout</button>
+</body>
+</html>
