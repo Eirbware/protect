@@ -1,0 +1,5 @@
+/dist
+/nginx
+/vendor
+/composer.lock
+/auth-config.php

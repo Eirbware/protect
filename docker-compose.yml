@@ -1,0 +1,14 @@
+---
+services:
+  nginx:
+    image: lscr.io/linuxserver/nginx:latest
+    container_name: protect-demo
+    environment:
+      - PUID=1000
+      - PGID=1001
+      - TZ=Etc/UTC
+    volumes:
+      - ./nginx/config:/config
+    ports:
+      - 8080:80
+    restart: unless-stopped

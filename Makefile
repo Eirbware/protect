@@ -1,0 +1,39 @@
+src_files += $(wildcard src/* src/**/*)
+build_targets = $(patsubst src/%,dist/www/protect/%,${src_files})
+
+.PHONY: all
+all: build
+
+.PHONY: build
+build: download_deps .WAIT ${build_targets} dist/php/vendor
+
+.PHONY: download_deps
+download_deps: composer.lock
+
+composer.lock:
+	composer install
+
+dist/www/protect/%: src/%
+	@mkdir -p $(dir $@)
+	cp -r $^ $@
+
+dist/php/%: %
+	@mkdir -p $(dir $@)
+	cp -r $^ $@
+
+.PHONY: install
+install: build
+	@mkdir -p nginx
+	cp -r dist/* nginx
+
+.PHONY: demo
+demo: build .WAIT install
+	docker compose up -d
+
+.PHONY: dev
+dev: demo
+
+.PHONY: clean
+clean:
+	docker compose down
+	${RM} -r nginx dist vendor composer.lock
