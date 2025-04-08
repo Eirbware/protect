@@ -27,7 +27,7 @@ install: build
 	cp -r dist/* nginx
 
 .PHONY: demo
-demo: build .WAIT install
+demo: build install
 	docker compose up -d
 
 .PHONY: dev
