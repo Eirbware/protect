@@ -1,11 +1,11 @@
 src_files += $(wildcard src/* src/**/*)
-build_targets = $(patsubst src/%,dist/www/protect/%,${src_files})
+build_targets = $(patsubst src/%,dist/www/%,${src_files})
 
 .PHONY: all
 all: build
 
 .PHONY: build
-build: download_deps .WAIT ${build_targets} dist/php/vendor
+build: download_deps .WAIT ${build_targets} dist/php/vendor dist/php/auth-config.php
 
 .PHONY: download_deps
 download_deps: composer.lock
@@ -13,7 +13,7 @@ download_deps: composer.lock
 composer.lock:
 	composer install
 
-dist/www/protect/%: src/%
+dist/www/%: src/%
 	@mkdir -p $(dir $@)
 	cp -r $^ $@
 
