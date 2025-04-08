@@ -5,7 +5,7 @@ build_targets = $(patsubst src/%,dist/www/%,${src_files})
 all: build
 
 .PHONY: build
-build: download_deps .WAIT ${build_targets} dist/php/vendor dist/php/auth-config.php
+build: download_deps ${build_targets} dist/php/vendor dist/php/auth-config.php
 
 .PHONY: download_deps
 download_deps: composer.lock
