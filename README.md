@@ -17,7 +17,7 @@ Vous devrez aussi renseigner les champs suivants :
 "redirect_url" => "http://localhost:8080/protect/login.php"
 ```
 
-Si vous n'avez pas de quoi les remplir, [telegram.eirb.fr](contactez Eirbware)
+Si vous n'avez pas de quoi les remplir, [contactez Eirbware](telegram.eirb.fr)
 
 2. Exécutez :
 
