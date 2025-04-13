@@ -16,6 +16,16 @@ class LoginResponse {
     function toString(): string {
         return json_encode($this);
     }
+
+    function send(?string $redirect = null) {
+        if (isset($redirect)) {
+            // TODO('transfer error message to client if login failed?')
+            header('Location: ' . $redirect);
+        } else {
+            header('Content-Type: application/json; charset=utf-8');
+            echo $this->toString();
+        }
+    }
 }
 
 ?>
