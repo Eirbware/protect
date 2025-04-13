@@ -8,11 +8,6 @@ require_once __DIR__ . '/../../php/auth-config.php';
 use Eirbware\Protect\LoginResponse;
 use Jumbojett\OpenIDConnectClient;
 
-// TODO('remove this')
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 $redirect = null;
 if (isset($_SESSION['protect_redirect'])) {
     $redirect = $_SESSION['protect_redirect'];
