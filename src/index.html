@@ -20,9 +20,21 @@ async function data_button()
     }
 }
 
-document.getElementById("login").onclick = protect.login;
-document.getElementById("get-data").onclick = data_button;
-document.getElementById("logout").onclick = protect.logout;
+
+function data_button2()
+{
+    protect.getData()
+        .then(data => alert(JSON.stringify(data)))
+        .catch(err => {
+            // Could not get data, try to login
+            protect.login();
+        });
+}
+
+document.getElementById("login").onclick = () => protect.login();
+document.getElementById("get-data").onclick = () => data_button();
+document.getElementById("get-data2").onclick = () => data_button2();
+document.getElementById("logout").onclick = () => protect.logout();
 </script>
 </head>
 <body>
@@ -30,6 +42,7 @@ document.getElementById("logout").onclick = protect.logout;
 
     <button id="login">Login</button>
     <button id="get-data">Voir les données</button>
+    <button id="get-data2">Voir les données mais login si fail</button>
     <button id="logout">Logout</button>
 </body>
 </html>
