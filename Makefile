@@ -49,7 +49,7 @@ install: build
 	cp -r dist/* nginx
 
 .PHONY: dev
-dev: build
+dev: install
 	docker compose up -d
 
 .PHONY: clean
