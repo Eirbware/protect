@@ -18,7 +18,7 @@ demo.tar.gz: demo
 	tar -cvz -f $@ $^
 	${RM} $@.bak
 
-demo: ${prod_targets} demo/nginx/php
+demo: ${prod_targets} demo/nginx/php/vendor demo/nginx/php/auth-config.php
 	@touch $@
 
 demo/nginx/%: dist/%
