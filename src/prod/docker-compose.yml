@@ -1,0 +1,16 @@
+---
+services:
+  nginx:
+    image: lscr.io/linuxserver/nginx:latest
+    container_name: protect-demo
+    environment:
+      # Required in prod with rootless https://docs.eirb.fr/gestion_vps/#gestion-des-uid
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Paris
+    volumes:
+      - ./nginx:/config
+      - ./mods:/custom-cont-init.d:ro  # Required for prod so php-fpm can run as root
+    ports:
+      - PORT:80  # TODO: specify the port
+    restart: unless-stopped

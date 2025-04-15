@@ -3,3 +3,5 @@
 /vendor
 /composer.lock
 /auth-config.php
+/demo
+/demo.tar.gz

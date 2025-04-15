@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1001
-      - TZ=Etc/UTC
+      - TZ=Europe/Paris
     volumes:
       - ./nginx:/config
     ports:
