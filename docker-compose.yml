@@ -4,11 +4,16 @@ services:
     image: lscr.io/linuxserver/nginx:latest
     container_name: protect-demo
     environment:
+      # - PUID=0  # Required in prod https://docs.eirb.fr/gestion_vps/#gestion-des-uid
+      # - PGID=0
+
       - PUID=1000
       - PGID=1001
-      - TZ=Etc/UTC
+
+      - TZ=Europe/Paris
     volumes:
       - ./nginx:/config
+      - ./mods:/custom-cont-init.d:ro  # Required for prod so php-fpm can run as root
     ports:
       - 8080:80
     restart: unless-stopped
