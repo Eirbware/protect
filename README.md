@@ -69,6 +69,6 @@ Si vous n'avez pas de quoi les remplir, [contactez Eirbware](telegram.eirb.fr)
 2. Exécutez :
 
 ```sh
-make demo
+make dev
 ```
 

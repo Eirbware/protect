@@ -1,0 +1,4 @@
+#!/bin/sh
+# This is a hacky way to enable lscr nginx to run php-fpm as root, we need to
+# add the flag -R to the command used to start php-fpm
+sed -i 's/-F/-F -R/' /var/run/service/svc-php-fpm/run
