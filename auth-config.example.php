@@ -17,6 +17,6 @@ $OPENID_CONFIG = [
 $PROTECTED_DATA = [
     "message" =>"Je suis protégé !",
     "video" => "https://www.youtube.com/watch?v=xvFZjo5PgG0",
-    "theme_du_wei" => "wei.eirb.fr"
+    "theme_du_wei" => "https://wei.eirb.fr"
 ];
 ?>
