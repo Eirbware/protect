@@ -37,8 +37,18 @@ function logout(redirect = window.location.origin) {
 }
 
 
+/*
+ * Redirect the browser to logout page. After logout, the browser redirects by
+ * default to '/'.
+ */
+function redirect(redirectId) {
+    window.location = `/protect/link.php?name=${redirectId}`;
+}
+
+
 export default {
     login,
     getData,
     logout,
+    redirect,
 };

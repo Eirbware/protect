@@ -34,15 +34,37 @@ function data_button2()
 document.getElementById("login").onclick = () => protect.login();
 document.getElementById("get-data").onclick = () => data_button();
 document.getElementById("get-data2").onclick = () => data_button2();
+document.getElementById("redirect").onclick = () => protect.redirect("video");
+document.getElementById("redirect2").onclick = () => protect.redirect("theme_du_wei");
 document.getElementById("logout").onclick = () => protect.logout();
 </script>
 </head>
 <body>
     <h1>Demo protect by Eirbware</h1>
 
-    <button id="login">Login</button>
-    <button id="get-data">Voir les données</button>
-    <button id="get-data2">Voir les données mais login si fail</button>
-    <button id="logout">Logout</button>
+    <section id="js">
+        <h2>Avec js</h2>
+
+        <div>
+            <button id="login">Login</button>
+            <button id="get-data">Voir les données</button>
+            <button id="get-data2">Voir les données mais login si fail</button>
+            <button id="redirect">Vidéo de liste</button>
+            <button id="redirect2">Téma le thème du wei</button>
+            <button id="logout">Logout</button>
+        </div>
+    </section>
+
+    <section id="nojs">
+        <h2>Sans js</h2>
+
+        <p>La seule feature qui a du sens sans js est la redirection</p>
+
+        <div>
+            <a href="/protect/link.php?name=video">Vidéo de liste</a>
+            <a href="/protect/link.php?name=theme_du_wei">Téma le thème du wei</a>
+        </div>
+    </section>
+
 </body>
 </html>
