@@ -25,6 +25,11 @@ demo/nginx/%: dist/%
 	@mkdir -p $(dir $@)
 	cp -r $^ $@
 
+# dummy rule to prevent some make version to fail because vendor directory
+# doesn't exist
+vendor:
+	mkdir -p $@
+
 demo/nginx/php/auth-config.php: src/prod/nginx/php/auth-config.php
 	@mkdir -p $(dir $@)
 	cp -r $^ $@
