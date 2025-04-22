@@ -2,7 +2,7 @@
 services:
   nginx:
     image: lscr.io/linuxserver/nginx:latest
-    container_name: protect-demo
+    container_name: NAME_HERE
     environment:
       # Required in prod with rootless https://docs.eirb.fr/gestion_vps/#gestion-des-uid
       - PUID=0
@@ -14,3 +14,6 @@ services:
     ports:
       - PORT:80  # TODO: specify the port
     restart: unless-stopped
+    labels:
+      - portainer_ownership=restricted
+      - portainer_authorized_teams=[NAME_HERE]
