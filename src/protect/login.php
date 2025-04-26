@@ -32,7 +32,22 @@ $openIdClient = new OpenIDConnectClient(
     $OPENID_CONFIG['client_secret']
 );
 
-$openIdClient->setRedirectURL($OPENID_CONFIG['redirect_url']);
+$redirect_url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+$whitelisted = false;
+for ($i = 0 ; $i <  count($WHITELISTED_ORIGINS) ; ++$i) {
+    if (str_starts_with($redirect_url, $WHITELISTED_ORIGINS[$i])) {
+        $whitelisted = true;
+        break;
+    }
+}
+
+if (!$whitelisted) {
+    $response = new LoginResponse(FALSE, "Request origin is not whitelisted", $_SESSION);
+    $response->send($redirect);
+    $_SESSION['protect_redirect'] = null;
+    exit(0);
+}
+$openIdClient->setRedirectURL($redirect_url);
 
 try {
     $openIdClient->authenticate();
@@ -65,5 +80,4 @@ $_SESSION['cas_data'] = $userInfo;
 $response = new LoginResponse(TRUE, "Login successful", $_SESSION);
 $response->send($redirect);
 $_SESSION['protect_redirect'] = null;
-
 ?>

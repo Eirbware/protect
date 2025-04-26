@@ -10,7 +10,6 @@ $OPENID_CONFIG = [
     "server_url" => "<server_url>",
     "client_id" => "<clientId>",
     "client_secret" => "<clientSecret>",
-    "redirect_url" => "http://localhost:8080/protect/login.php"
 ];
 
 // Protected links accessible through `/protect/links.php?name=<link-name>` when authentified
