@@ -3,6 +3,7 @@ session_start();
 
 require_once __DIR__ . '/../../php/vendor/autoload.php';
 require_once __DIR__ . '/src/LoginResponse.php';
+require_once __DIR__ . '/utils.php';
 require_once __DIR__ . '/../../php/auth-config.php';
 
 use Eirbware\Protect\LoginResponse;
@@ -33,15 +34,7 @@ $openIdClient = new OpenIDConnectClient(
 );
 
 $redirect_url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
-$whitelisted = false;
-for ($i = 0 ; $i <  count($WHITELISTED_ORIGINS) ; ++$i) {
-    if (str_starts_with($redirect_url, $WHITELISTED_ORIGINS[$i])) {
-        $whitelisted = true;
-        break;
-    }
-}
-
-if (!$whitelisted) {
+if (!is_url_whitelisted($redirect_url, $WHITELISTED_ORIGINS)) {
     $response = new LoginResponse(FALSE, "Request origin is not whitelisted", $_SESSION);
     $response->send($redirect);
     $_SESSION['protect_redirect'] = null;
