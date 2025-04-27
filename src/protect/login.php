@@ -2,7 +2,7 @@
 session_start();
 
 require_once __DIR__ . '/../../php/vendor/autoload.php';
-require_once __DIR__ . '/src/LoginResponse.php';
+require_once __DIR__ . '/response/LoginResponse.php';
 require_once __DIR__ . '/utils.php';
 require_once __DIR__ . '/../../php/auth-config.php';
 
