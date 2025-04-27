@@ -1,7 +1,7 @@
 <?php
 // Whitelisted origins
 $WHITELISTED_ORIGINS = [
-    "http://localhost:PORT",
+    "http://localhost:8080",
     "https://CLIENT_ID.eirb.fr",
 ];
 
