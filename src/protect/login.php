@@ -33,7 +33,7 @@ $openIdClient = new OpenIDConnectClient(
     $OPENID_CONFIG['client_secret']
 );
 
-$redirect_url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+$redirect_url = (is_incoming_https() ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
 if (!is_url_whitelisted($redirect_url, $WHITELISTED_ORIGINS)) {
     $response = new LoginResponse(FALSE, "Request origin is not whitelisted", $_SESSION);
     $response->send($redirect);

@@ -1,4 +1,13 @@
 <?php
+function is_incoming_https() {
+    if (empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && empty($_SERVER['HTTPS']))
+        return false;
+    else if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'http')
+        return false;
+
+    return true;
+}
+
 function is_url_whitelisted (string $redirect_url, array $whitelisted_origins) {
     // Required to check if url is valid, otherwise parse_url may not work
     if (!str_starts_with($redirect_url, "http") &&
