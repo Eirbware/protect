@@ -15,5 +15,4 @@ services:
       - PORT:80  # TODO: specify the port
     restart: unless-stopped
     labels:
-      - portainer_ownership=restricted
-      - portainer_authorized_teams=[NAME_HERE]
+      - io.portainer.accesscontrol.teams=NAME_HERE
