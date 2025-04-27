@@ -2,7 +2,8 @@
 session_start();
 
 require_once __DIR__ . '/../../php/vendor/autoload.php';
-require_once __DIR__ . '/src/LoginResponse.php';
+require_once __DIR__ . '/response/LoginResponse.php';
+require_once __DIR__ . '/utils.php';
 require_once __DIR__ . '/../../php/auth-config.php';
 
 use Eirbware\Protect\LoginResponse;
@@ -32,7 +33,14 @@ $openIdClient = new OpenIDConnectClient(
     $OPENID_CONFIG['client_secret']
 );
 
-$openIdClient->setRedirectURL($OPENID_CONFIG['redirect_url']);
+$redirect_url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]";
+if (!is_url_whitelisted($redirect_url, $WHITELISTED_ORIGINS)) {
+    $response = new LoginResponse(FALSE, "Request origin is not whitelisted", $_SESSION);
+    $response->send($redirect);
+    $_SESSION['protect_redirect'] = null;
+    exit(0);
+}
+$openIdClient->setRedirectURL($redirect_url);
 
 try {
     $openIdClient->authenticate();
@@ -65,5 +73,4 @@ $_SESSION['cas_data'] = $userInfo;
 $response = new LoginResponse(TRUE, "Login successful", $_SESSION);
 $response->send($redirect);
 $_SESSION['protect_redirect'] = null;
-
 ?>
