@@ -11,8 +11,8 @@ function is_url_whitelisted (string $redirect_url, array $whitelisted_origins) {
         !array_key_exists("host", $parsed_url))
         return false;
 
-    for ($i = 0 ; $i <  count($whitelisted_origins) ; ++$i) {
-        $parsed_origin = parse_url($whitelisted_origins[$i]);
+    foreach ($whitelisted_origins as $origin) {
+        $parsed_origin = parse_url($origin);
 
         // Make sure there is no error when acccessing keys later
         if (!array_key_exists("scheme", $parsed_origin) ||
