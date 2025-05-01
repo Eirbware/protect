@@ -12,7 +12,7 @@ class LoginResponse {
             $this->user = $session['cas_data'];
         }
     }
-    
+
     function toString(): string {
         return json_encode($this);
     }

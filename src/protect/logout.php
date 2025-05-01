@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once __DIR__ . '/utils.php';
+start_protect_session();
 
 // TODO('logout openID?')
 

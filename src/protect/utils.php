@@ -1,4 +1,14 @@
 <?php
+// Use query defined session id to enable users to make requests from other
+// domains
+function start_protect_session () {
+    ini_set("session.use_cookies", 0);
+    ini_set("session.use_only_cookies", 0);
+    ini_set("session.cache_limiter", "");
+    ini_set('session.use_trans_sid', 1);
+    session_start();
+}
+
 function is_incoming_https() {
     if (empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && empty($_SERVER['HTTPS']))
         return false;

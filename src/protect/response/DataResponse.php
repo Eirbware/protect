@@ -8,10 +8,9 @@ class DataResponse {
         $this->user = $session['cas_data'];
         $this->protected = $protected;
     }
-    
+
     function toString(): string {
         return json_encode($this);
     }
 }
-
 ?>
