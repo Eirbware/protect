@@ -87,7 +87,9 @@ protect.logout() -> void
 
 ## Lancer l'environnement de développement
 
-1. Créer un fichier `auth-config.php` (en utilisant `auth-config.example.php`)
+Afin d'utiliser l'environnement de développement, il est nécéssaire d'avoir installé [composer](https://getcomposer.org/download/)
+
+1. Créer un fichier `auth-config.php` dans la racine du dépôt (en utilisant `auth-config.example.php`)
 
 Vous devrez aussi renseigner les champs suivants :
 
@@ -101,6 +103,13 @@ Vous devrez aussi renseigner les champs suivants :
 Si vous n'avez pas de quoi les remplir, [contactez Eirbware](telegram.eirb.fr)
 
 2. Exécutez :
+```sh
+make build
+```
+
+3. Copiez votre site compilé dans le dossier ```dist/www``` créé par la commande précédente 
+
+4. Exécutez :
 
 ```sh
 make dev
